@@ -3,7 +3,7 @@ Raspberry Pi に挿したUSBマイクから音声データを取り出す。
 
 ## 1. Environment
 - Linux rpi4 5.15.84-v8+ #1613 SMP PREEMPT Thu Jan 5 12:03:08 GMT 2023 aarch64 GNU/Linux
-- 
+- pipenv 
 
 
 ## 2. preparation
@@ -82,21 +82,10 @@ Simple mixer control 'Mic',0
   Mono: Capture 16 [100%] [23.81dB] [on]
 ```
 
-### 4. 環境変数設定
-1. 環境変数設定
-ラズパイを再起動しても設定が保存されているように設定をする。  
-「/etc/profile」を編集してjuliusの設定をする。  
+### 4. pyenvとpyaudioのインストール
+1. pyaudioをインストールする準備 [参照](https://plaza.rakuten.co.jp/qualis00/diary/202105150000/)  
 ```bash
-$ sudo nano /etc/profile
-
-# /etc/profile by nano
-#for Julius
-export ALSADEV="plughw:0,0"
-export AUDIODEV=/dev/dsp
+sudo apt-get install python-dev portaudio19-dev
 ```
 
-2. osspd-alsaインストール
-```bash
-$ sudo apt-get install osspd-alsa
-```
-
+2. pipenvで環境を管理する
